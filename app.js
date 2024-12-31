@@ -57,7 +57,7 @@ const sessionMiddleware = session({
   store: MongoStore.create({
     mongoUrl: process.env.MONGO_URI, // Use environment variable for MongoDB URI
     collectionName: 'sessions',
-    ttl: process.env.SESSION_TTL, // Use environment variable for TTL
+    ttl: 24 * 60 * 60, // Session TTL (1 day)
     autoRemove: 'native',
     touchAfter: 24 * 3600 // Time period in seconds between session updates
   }),
