@@ -2,8 +2,8 @@ const { MongoClient } = require('mongodb');
 const state = { db: null };
 
 module.exports.connect = async function (done) {
-  const url = 'mongodb://localhost:27017';
-  const dbname = 'shopping2';
+  const url = process.env.MONGO_URI;
+  const dbname = 'shopping';
 
   try {
     const client = await MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
