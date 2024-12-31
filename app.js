@@ -65,7 +65,7 @@ const sessionMiddleware = session({
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-    maxAge: process.env.SESSION_COOKIE_MAX_AGE // Use environment variable for cookie max age
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
   }
 });
 
