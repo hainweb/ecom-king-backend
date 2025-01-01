@@ -51,13 +51,13 @@ console.log('Environment:', app.get('env')); // Should print 'production' on Ren
 
 // Session configuration (add this before your routes)
 const sessionMiddleware = session({
-  secret: process.env.SESSION_SECRET, // Use environment variable for session secret
+  secret: 'ajinajaisecrecta', // Use environment variable for session secret
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URI, // Use environment variable for MongoDB URI
+    mongoUrl: 'mongodb+srv://ajinrajeshhillten:ilzSIoQy0bzlzgF2@cluster0.prb1l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', // Use environment variable for MongoDB URI
     collectionName: 'sessions',
-    ttl: 24 * 60 * 60, // Session TTL (1 day)
+    ttl: 24 * 60 * 60, // Use environment variable for TTL
     autoRemove: 'native',
     touchAfter: 24 * 3600 // Time period in seconds between session updates
   }),
@@ -65,7 +65,7 @@ const sessionMiddleware = session({
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    maxAge: process.env.SESSION_COOKIE_MAX_AGE // Use environment variable for cookie max age
   }
 });
 
