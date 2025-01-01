@@ -62,7 +62,7 @@ const sessionMiddleware = session({
     touchAfter: 24 * 3600 // Time period in seconds between session updates
   }),
   cookie: {
-    secure: false,
+    secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     maxAge: 24 * 60 * 60 * 1000 // Use environment variable for cookie max age
